@@ -12,6 +12,8 @@
 		5239712B27DF974C00B2F29D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239712A27DF974C00B2F29D /* ViewController.swift */; };
 		5239713027DF974D00B2F29D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5239712F27DF974D00B2F29D /* Assets.xcassets */; };
 		5239713327DF974D00B2F29D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5239713127DF974D00B2F29D /* LaunchScreen.storyboard */; };
+		52C73C3D27DFA5E00085CC8C /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C73C3C27DFA5E00085CC8C /* SecondVC.swift */; };
+		52C73C4127DFA6610085CC8C /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C73C4027DFA6610085CC8C /* FirstVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		5239712F27DF974D00B2F29D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5239713227DF974D00B2F29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5239713427DF974D00B2F29D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52C73C3C27DFA5E00085CC8C /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
+		52C73C4027DFA6610085CC8C /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				5239712627DF974C00B2F29D /* AppDelegate.swift */,
 				5239712827DF974C00B2F29D /* SceneDelegate.swift */,
 				5239712A27DF974C00B2F29D /* ViewController.swift */,
+				52C73C4027DFA6610085CC8C /* FirstVC.swift */,
+				52C73C3C27DFA5E00085CC8C /* SecondVC.swift */,
 				5239712F27DF974D00B2F29D /* Assets.xcassets */,
 				5239713127DF974D00B2F29D /* LaunchScreen.storyboard */,
 				5239713427DF974D00B2F29D /* Info.plist */,
@@ -136,6 +142,8 @@
 			files = (
 				5239712B27DF974C00B2F29D /* ViewController.swift in Sources */,
 				5239712727DF974C00B2F29D /* AppDelegate.swift in Sources */,
+				52C73C3D27DFA5E00085CC8C /* SecondVC.swift in Sources */,
+				52C73C4127DFA6610085CC8C /* FirstVC.swift in Sources */,
 				5239712927DF974C00B2F29D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
