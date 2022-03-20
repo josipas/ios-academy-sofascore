@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
+
         UITabBar.appearance().backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0.4)
         tabBar.tabBar.tintColor = .white
         tabBar.viewControllers = [createFirstNavigationController(), createSecondNavigationController()]
@@ -35,14 +36,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createFirstNavigationController() -> UINavigationController {
         let firstVC = FirstVC()
+
         firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        
+        firstVC.title = "Images"
+
         return UINavigationController(rootViewController: firstVC)
     }
     
     func createSecondNavigationController() -> UINavigationController {
         let secondVC = SecondVC()
+
         secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+        secondVC.title = "Empty 😔"
         
         return UINavigationController(rootViewController: secondVC)
     }
