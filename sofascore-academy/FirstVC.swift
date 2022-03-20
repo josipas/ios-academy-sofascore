@@ -9,8 +9,24 @@ import UIKit
 
 class FirstVC: UIViewController {
 
+    let centralImageView = UIImageView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemGray
+        configureImageView()
+    }
+
+    func configureImageView() {
+        view.addSubview(centralImageView)
+        centralImageView.translatesAutoresizingMaskIntoConstraints = false
+        centralImageView.image = .checkmark
+
+        NSLayoutConstraint.activate([
+            centralImageView.widthAnchor.constraint(equalToConstant: 150),
+            centralImageView.heightAnchor.constraint(equalToConstant: 150),
+            centralImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            centralImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
