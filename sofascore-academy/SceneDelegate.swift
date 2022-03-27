@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  sofascore-academy
-//
-//  Created by Five on 14.03.2022..
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -35,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func createFirstNavigationController() -> UINavigationController {
-        let firstVC = FirstVC()
+        let firstVC = ImagesVC()
 
         firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         firstVC.title = "Images"
@@ -44,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func createSecondNavigationController() -> UINavigationController {
-        let secondVC = SecondVC()
+        let secondVC = EmptyVC()
 
         secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
         secondVC.title = "Empty 😔"

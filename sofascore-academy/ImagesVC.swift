@@ -1,13 +1,6 @@
-//
-//  FirstVC.swift
-//  sofascore-academy
-//
-//  Created by Five on 14.03.2022..
-//
-
 import UIKit
 
-class FirstVC: UIViewController {
+class ImagesVC: UIViewController {
 
     let centralImageView = UIImageView()
     let topLeadingImageView = UIImageView()
@@ -18,11 +11,19 @@ class FirstVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray
+        addSubviews()
         configureViews()
     }
 
-    func configureViews() {
+    func addSubviews() {
         view.addSubview(centralImageView)
+        view.addSubview(topLeadingImageView)
+        view.addSubview(topTrailingImageView)
+        view.addSubview(bottomLeadingImageView)
+        view.addSubview(bottomTrailingImageView)
+    }
+
+    func configureViews() {
         centralImageView.translatesAutoresizingMaskIntoConstraints = false
         centralImageView.image = .checkmark
 
@@ -34,7 +35,6 @@ class FirstVC: UIViewController {
         ])
 
 
-        view.addSubview(topLeadingImageView)
         topLeadingImageView.translatesAutoresizingMaskIntoConstraints = false
         topLeadingImageView.image = .checkmark
 
@@ -46,7 +46,6 @@ class FirstVC: UIViewController {
         ])
 
 
-        view.addSubview(topTrailingImageView)
         topTrailingImageView.translatesAutoresizingMaskIntoConstraints = false
         topTrailingImageView.image = .checkmark
 
@@ -61,7 +60,6 @@ class FirstVC: UIViewController {
         guard let tabBarHeight = self.tabBarController?.tabBar.frame.height else { return }
 
 
-        view.addSubview(bottomLeadingImageView)
         bottomLeadingImageView.translatesAutoresizingMaskIntoConstraints = false
         bottomLeadingImageView.image = .checkmark
 
@@ -73,7 +71,6 @@ class FirstVC: UIViewController {
         ])
 
 
-        view.addSubview(bottomTrailingImageView)
         bottomTrailingImageView.translatesAutoresizingMaskIntoConstraints = false
         bottomTrailingImageView.image = .checkmark
 
