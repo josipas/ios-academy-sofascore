@@ -15,21 +15,12 @@ class CustomTextField: UITextField {
     }
 
     private func configureViews()  {
-        styleViews()
-        addConstraints()
-    }
-
-    private func styleViews() {
         guard let color = color else { return }
         backgroundColor = .white
         textColor = color
         layer.cornerRadius = 20
         clipsToBounds = true
         textAlignment = .center
-        placeholder = "Pretraži..."
-    }
-
-    private func addConstraints() {
-
+        placeholder = "Search..."
     }
 }

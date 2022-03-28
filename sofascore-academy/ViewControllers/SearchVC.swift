@@ -4,9 +4,12 @@ class SearchVC: UIViewController {
     private var imageView: CustomImageView!
     private var inputTextField: CustomTextField!
 
+    private let alert = CustomAllertView(alertTitle: "Empty transport name", alertMessage: "Please enter transport name 🥰", buttonTitle: "OK")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
+        alert.delegate = self
         buildViews()
     }
 
@@ -25,6 +28,7 @@ class SearchVC: UIViewController {
     private func addSubviews() {
         view.addSubview(imageView)
         view.addSubview(inputTextField)
+        view.addSubview(alert)
     }
 
     private func configureViews()  {
@@ -33,7 +37,7 @@ class SearchVC: UIViewController {
     }
 
     private func styleViews() {
-
+        alert.isHidden = true
     }
 
     private func addConstraints() {
@@ -49,12 +53,41 @@ class SearchVC: UIViewController {
             $0.leading.equalToSuperview().offset(30)
             $0.trailing.equalToSuperview().offset(-30)
         }
+
+        alert.snp.makeConstraints {
+            $0.height.width.equalTo(200)
+            $0.center.equalToSuperview()
+        }
+    }
+
+    private func presentTransportVC() {
+        guard let
+            transportName = inputTextField.text,
+            !transportName.isEmpty
+        else {
+            self.tabBarController?.tabBar.isUserInteractionEnabled = false
+            inputTextField.isEnabled = false
+            alert.isHidden = false
+            return
+        }
+        let transportVC = TransportDetailsVC()
+        transportVC.title = inputTextField.text
+        inputTextField.text = ""
+        navigationController?.present(transportVC, animated: true)
     }
 }
 
 extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("tapped return")
+        presentTransportVC()
         return true
+    }
+}
+
+extension SearchVC: CustomAlertDelegate {
+    @objc func didTapButton() {
+        self.tabBarController?.tabBar.isUserInteractionEnabled = true
+        inputTextField.isEnabled = true
+        alert.isHidden = true
     }
 }
