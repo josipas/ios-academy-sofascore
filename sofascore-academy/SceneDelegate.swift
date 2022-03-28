@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  sofascore-academy
-//
-//  Created by Five on 14.03.2022..
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -26,22 +19,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
-        UITabBar.appearance().tintColor = .white
+
+        UITabBar.appearance().backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0.4)
+        tabBar.tabBar.tintColor = .white
         tabBar.viewControllers = [createFirstNavigationController(), createSecondNavigationController()]
         
         return tabBar
     }
     
     func createFirstNavigationController() -> UINavigationController {
-        let firstVC = FirstVC()
+        let firstVC = ImagesVC()
+
         firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        
+        firstVC.title = "Images"
+
         return UINavigationController(rootViewController: firstVC)
     }
     
     func createSecondNavigationController() -> UINavigationController {
-        let secondVC = SecondVC()
+        let secondVC = EmptyVC()
+
         secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+        secondVC.title = "Empty 😔"
         
         return UINavigationController(rootViewController: secondVC)
     }
