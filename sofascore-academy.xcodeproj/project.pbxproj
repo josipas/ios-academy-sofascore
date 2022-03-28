@@ -14,6 +14,7 @@
 		5239713327DF974D00B2F29D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5239713127DF974D00B2F29D /* LaunchScreen.storyboard */; };
 		52A79C5927F1E94000C15103 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 52A79C5827F1E94000C15103 /* SnapKit */; };
 		52A79C5D27F236A400C15103 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A79C5C27F236A400C15103 /* CustomImageView.swift */; };
+		52A79C5F27F23F4400C15103 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A79C5E27F23F4400C15103 /* CustomTextField.swift */; };
 		52C73C3D27DFA5E00085CC8C /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C73C3C27DFA5E00085CC8C /* SearchVC.swift */; };
 		52C73C4127DFA6610085CC8C /* ImagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C73C4027DFA6610085CC8C /* ImagesVC.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,7 @@
 		5239713227DF974D00B2F29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5239713427DF974D00B2F29D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A79C5C27F236A400C15103 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		52A79C5E27F23F4400C15103 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		52C73C3C27DFA5E00085CC8C /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		52C73C4027DFA6610085CC8C /* ImagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				52A79C5C27F236A400C15103 /* CustomImageView.swift */,
+				52A79C5E27F23F4400C15103 /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A79C5F27F23F4400C15103 /* CustomTextField.swift in Sources */,
 				5239712B27DF974C00B2F29D /* ViewController.swift in Sources */,
 				52A79C5D27F236A400C15103 /* CustomImageView.swift in Sources */,
 				5239712727DF974C00B2F29D /* AppDelegate.swift in Sources */,

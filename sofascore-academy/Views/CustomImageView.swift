@@ -64,6 +64,9 @@ class CustomImageView: UIView {
 
         imageView.tintColor = color
         backgroundColor = UIColor(cgColor: color.cgColor).withAlphaComponent(0.5)
+
+        layer.cornerRadius = 20
+        clipsToBounds = true
     }
 
     private func addConstraints() {
