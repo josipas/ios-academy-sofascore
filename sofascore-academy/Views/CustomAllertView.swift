@@ -84,7 +84,6 @@ class CustomAllertView: UIView {
         }
 
         alertMessageLabel.snp.makeConstraints {
-            $0.trailing.leading.equalToSuperview()
             $0.top.equalTo(alertTitleLabel.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().offset(-10)

@@ -4,7 +4,7 @@ class SearchVC: UIViewController {
     private var imageView: CustomImageView!
     private var inputTextField: CustomTextField!
 
-    private let alert = CustomAllertView(alertTitle: "Empty transport name", alertMessage: "Please enter transport name 🥰", buttonTitle: "OK")
+    private let alert = CustomAllertView(alertTitle: "Empty transport name", alertMessage: "Please enter transport name 🥰🥰🥰", buttonTitle: "OK")
 
     override func viewDidLoad() {
         super.viewDidLoad()

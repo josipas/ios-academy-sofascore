@@ -66,12 +66,9 @@
 		5239712527DF974C00B2F29D /* sofascore-academy */ = {
 			isa = PBXGroup;
 			children = (
+				52B7F8B027F35866008CBACF /* Initialization */,
 				52A79C5B27F2368600C15103 /* Views */,
 				52A79C5A27F2367000C15103 /* ViewControllers */,
-				5239712627DF974C00B2F29D /* AppDelegate.swift */,
-				5239712827DF974C00B2F29D /* SceneDelegate.swift */,
-				5239712F27DF974D00B2F29D /* Assets.xcassets */,
-				5239713127DF974D00B2F29D /* LaunchScreen.storyboard */,
 				5239713427DF974D00B2F29D /* Info.plist */,
 			);
 			path = "sofascore-academy";
@@ -95,6 +92,17 @@
 				52A79C6027F24B6200C15103 /* CustomAllertView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		52B7F8B027F35866008CBACF /* Initialization */ = {
+			isa = PBXGroup;
+			children = (
+				5239712627DF974C00B2F29D /* AppDelegate.swift */,
+				5239712827DF974C00B2F29D /* SceneDelegate.swift */,
+				5239712F27DF974D00B2F29D /* Assets.xcassets */,
+				5239713127DF974D00B2F29D /* LaunchScreen.storyboard */,
+			);
+			path = Initialization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
