@@ -1,10 +1,10 @@
 import UIKit
 
-protocol CustomAlertDelegate {
-    func didTapButton()
+protocol CustomAlertDelegate: CustomButtonDelegate {
+    func didTapButtonInAlert()
 }
 
-class CustomAllertView: UIView {
+class CustomAlertView: UIView {
     public var delegate: CustomAlertDelegate?
 
     private var alertTitle: String?
@@ -13,7 +13,7 @@ class CustomAllertView: UIView {
 
     private var alertTitleLabel: UILabel!
     private var alertMessageLabel: UILabel!
-    private var button: UIButton!
+    private var button: CustomButton!
 
     init(alertTitle: String, alertMessage: String, buttonTitle: String) {
         super.init(frame: .zero)
@@ -34,9 +34,11 @@ class CustomAllertView: UIView {
     }
 
     private func createViews() {
+        guard let buttonTitle = buttonTitle else { return }
+
         alertTitleLabel = UILabel()
         alertMessageLabel = UILabel()
-        button = UIButton()
+        button = CustomButton(title: buttonTitle, color: .purple)
     }
 
     private func addSubviews() {
@@ -64,11 +66,9 @@ class CustomAllertView: UIView {
 
         alertMessageLabel.text = alertMessage
         alertMessageLabel.font = .systemFont(ofSize: 14)
-        alertMessageLabel.textColor = .white
+        alertMessageLabel.textColor = .systemGray
         alertMessageLabel.numberOfLines = 0
         alertMessageLabel.textAlignment = .center
-
-        button.setTitle(buttonTitle, for: .normal)
     }
 
     private func addActions() {
@@ -97,6 +97,6 @@ class CustomAllertView: UIView {
     }
 
     @objc func didTapButton() {
-        self.delegate?.didTapButton()
+        self.delegate?.didTapButtonInAlert()
     }
 }

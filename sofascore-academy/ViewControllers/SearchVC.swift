@@ -3,8 +3,9 @@ import UIKit
 class SearchVC: UIViewController {
     private var imageView: CustomImageView!
     private var inputTextField: CustomTextField!
+    private var customButton: CustomButton!
 
-    private let alert = CustomAllertView(alertTitle: "Empty transport name", alertMessage: "Please enter transport name 🥰🥰🥰", buttonTitle: "OK")
+    private let alert = CustomAlertView(alertTitle: "Empty transport name", alertMessage: "Please enter transport name 🚗🚎✈️", buttonTitle: "OK")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,14 @@ class SearchVC: UIViewController {
         imageView = CustomImageView(transport: .bicycle, color: .white)
         inputTextField = CustomTextField(color: .purple)
         inputTextField.delegate = self
+        customButton = CustomButton(title: "Button", color: .systemGray)
+        customButton.delegate = self
     }
 
     private func addSubviews() {
         view.addSubview(imageView)
         view.addSubview(inputTextField)
+        view.addSubview(customButton)
         view.addSubview(alert)
     }
 
@@ -58,12 +62,18 @@ class SearchVC: UIViewController {
             $0.height.width.equalTo(200)
             $0.center.equalToSuperview()
         }
+
+        customButton.snp.makeConstraints {
+            $0.width.equalTo(100)
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(inputTextField.snp.bottom).offset(50)
+        }
     }
 
     private func presentTransportVC() {
         guard let
-            transportName = inputTextField.text,
-            !transportName.isEmpty
+                transportName = inputTextField.text,
+              !transportName.isEmpty
         else {
             self.tabBarController?.tabBar.isUserInteractionEnabled = false
             inputTextField.isEnabled = false
@@ -85,9 +95,13 @@ extension SearchVC: UITextFieldDelegate {
 }
 
 extension SearchVC: CustomAlertDelegate {
-    @objc func didTapButton() {
+    func didTapButtonInAlert() {
         self.tabBarController?.tabBar.isUserInteractionEnabled = true
         inputTextField.isEnabled = true
         alert.isHidden = true
+    }
+
+    func didTapCustomButton() {
+        inputTextField.text = Transport.allCases.randomElement()?.description
     }
 }

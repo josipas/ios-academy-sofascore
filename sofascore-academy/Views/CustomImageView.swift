@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-enum Transport {
+enum Transport: CaseIterable {
     case airplane
     case car
     case tram
@@ -9,14 +9,27 @@ enum Transport {
 
     var text: String {
         switch self {
-            case .airplane:
-                return "airplane.circle"
+        case .airplane:
+            return "airplane.circle"
         case .car:
             return "car.circle"
         case .tram:
             return "tram.circle"
         case .bicycle:
             return "bicycle.circle"
+        }
+    }
+
+    var description: String {
+        switch self {
+        case .airplane:
+            return "Airplane"
+        case .car:
+            return "Car"
+        case .tram:
+            return "Tram"
+        case .bicycle:
+            return "Bicycle"
         }
     }
 }
