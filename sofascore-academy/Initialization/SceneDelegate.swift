@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func createSecondNavigationController() -> UINavigationController {
-        let secondVC = SearchVC()
+        let secondVC = TransportVC()
 
         secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
         

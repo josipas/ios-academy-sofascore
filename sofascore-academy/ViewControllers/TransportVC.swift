@@ -1,6 +1,6 @@
 import UIKit
 
-class SearchVC: UIViewController {
+class TransportVC: UIViewController {
     private var imageView: CustomImageView!
     private var inputTextField: CustomTextField!
     private var customButton: CustomButton!
@@ -88,14 +88,14 @@ class SearchVC: UIViewController {
     }
 }
 
-extension SearchVC: UITextFieldDelegate {
+extension TransportVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         presentTransportVC()
         return true
     }
 }
 
-extension SearchVC: CustomAlertDelegate {
+extension TransportVC: CustomAlertDelegate {
     func didTapButtonInAlert() {
         self.tabBarController?.tabBar.isUserInteractionEnabled = true
         inputTextField.isEnabled = true
