@@ -5,7 +5,7 @@ class TransportVC: UIViewController {
     private var inputTextField: CustomTextField!
     private var customButton: CustomButton!
 
-    private let alert = CustomAlertView(alertTitle: "Wrong transport", alertMessage: "Please enter transport 🚗🚎✈️", buttonTitle: "OK")
+    private let alert = CustomAlertView(alertTitle: "Wrong transport", alertMessage: "Please enter transport \n🚗🚎✈️", buttonTitle: "OK")
 
     override func viewDidLoad() {
         super.viewDidLoad()
