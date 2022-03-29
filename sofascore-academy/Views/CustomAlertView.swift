@@ -71,10 +71,6 @@ class CustomAlertView: UIView {
         alertMessageLabel.textAlignment = .center
     }
 
-    private func addActions() {
-        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-    }
-
     private func addConstraints() {
         alertTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
@@ -94,6 +90,10 @@ class CustomAlertView: UIView {
             $0.leading.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().offset(-10)
         }
+    }
+
+    private func addActions() {
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
     }
 
     @objc func didTapButton() {

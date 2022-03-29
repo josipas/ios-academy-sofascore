@@ -5,7 +5,7 @@ class SearchVC: UIViewController {
     private var inputTextField: CustomTextField!
     private var customButton: CustomButton!
 
-    private let alert = CustomAlertView(alertTitle: "Empty transport name", alertMessage: "Please enter transport name 🚗🚎✈️", buttonTitle: "OK")
+    private let alert = CustomAlertView(alertTitle: "Wrong transport", alertMessage: "Please enter transport 🚗🚎✈️", buttonTitle: "OK")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class SearchVC: UIViewController {
         imageView = CustomImageView(transport: .bicycle, color: .white)
         inputTextField = CustomTextField(color: .purple)
         inputTextField.delegate = self
-        customButton = CustomButton(title: "Button", color: .systemGray)
+        customButton = CustomButton(title: "Generate", color: .systemGray)
         customButton.delegate = self
     }
 
@@ -73,15 +73,16 @@ class SearchVC: UIViewController {
     private func presentTransportVC() {
         guard let
                 transportName = inputTextField.text,
-              !transportName.isEmpty
+              !transportName.isEmpty,
+              Transport.allCases.contains(where: { $0.description == transportName }),
+              let transport = Transport.allCases.first(where: { $0.description == transportName })
         else {
             self.tabBarController?.tabBar.isUserInteractionEnabled = false
             inputTextField.isEnabled = false
             alert.isHidden = false
             return
         }
-        let transportVC = TransportDetailsVC()
-        transportVC.title = inputTextField.text
+        let transportVC = TransportDetailsVC(transport: transport)
         inputTextField.text = ""
         navigationController?.present(transportVC, animated: true)
     }
