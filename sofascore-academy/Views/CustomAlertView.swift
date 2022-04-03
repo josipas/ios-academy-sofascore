@@ -1,22 +1,17 @@
 import UIKit
 
-protocol CustomAlertDelegate: CustomButtonDelegate {
-    func didTapButtonInAlert()
-}
-
-class CustomAlertView: UIView {
-    public var delegate: CustomAlertDelegate?
-
+class CustomAlertView: UIViewController {
     private var alertTitle: String?
     private var alertMessage: String?
     private var buttonTitle: String?
 
-    private var alertTitleLabel: UILabel!
-    private var alertMessageLabel: UILabel!
+    private var alertView = UIView()
+    private var alertTitleLabel = UILabel()
+    private var alertMessageLabel = UILabel()
     private var button: CustomButton!
 
     init(alertTitle: String, alertMessage: String, buttonTitle: String) {
-        super.init(frame: .zero)
+        super.init(nibName: nil, bundle: nil)
         self.alertTitle = alertTitle
         self.alertMessage = alertMessage
         self.buttonTitle = buttonTitle
@@ -36,15 +31,14 @@ class CustomAlertView: UIView {
     private func createViews() {
         guard let buttonTitle = buttonTitle else { return }
 
-        alertTitleLabel = UILabel()
-        alertMessageLabel = UILabel()
         button = CustomButton(title: buttonTitle, color: .purple)
     }
 
     private func addSubviews() {
-        addSubview(alertTitleLabel)
-        addSubview(alertMessageLabel)
-        addSubview(button)
+        view.addSubview(alertView)
+        alertView.addSubview(alertTitleLabel)
+        alertView.addSubview(alertMessageLabel)
+        alertView.addSubview(button)
     }
 
     private func configureViews()  {
@@ -54,9 +48,9 @@ class CustomAlertView: UIView {
     }
 
     private func styleViews() {
-        backgroundColor = .black
-        layer.cornerRadius = 20
-        clipsToBounds = true
+        alertView.backgroundColor = .black
+        alertView.layer.cornerRadius = 20
+        alertView.clipsToBounds = true
 
         alertTitleLabel.text = alertTitle
         alertTitleLabel.font = .boldSystemFont(ofSize: 16)
@@ -72,23 +66,25 @@ class CustomAlertView: UIView {
     }
 
     private func addConstraints() {
+        alertView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.height.equalTo(200)
+            $0.trailing.leading.equalToSuperview().inset(40)
+        }
+
         alertTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
-            $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalToSuperview().offset(-10)
+            $0.leading.trailing.equalToSuperview().inset(10)
         }
 
         alertMessageLabel.snp.makeConstraints {
             $0.top.equalTo(alertTitleLabel.snp.bottom).offset(10)
-            $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalToSuperview().offset(-10)
+            $0.leading.trailing.equalToSuperview().inset(10)
         }
 
         button.snp.makeConstraints {
             $0.bottom.equalToSuperview().offset(-20)
-            $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalToSuperview().offset(-10)
+            $0.leading.trailing.equalToSuperview().inset(10)
         }
     }
 
@@ -97,6 +93,6 @@ class CustomAlertView: UIView {
     }
 
     @objc func didTapButton() {
-        self.delegate?.didTapButtonInAlert()
+        self.dismiss(animated: true, completion: nil)
     }
 }

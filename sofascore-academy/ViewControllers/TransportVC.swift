@@ -5,12 +5,10 @@ class TransportVC: UIViewController {
     private var inputTextField: CustomTextField!
     private var customButton: CustomButton!
 
-    private let alert = CustomAlertView(alertTitle: "Wrong transport", alertMessage: "Please enter transport \n🚗🚎✈️", buttonTitle: "OK")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
-        alert.delegate = self
         buildViews()
     }
 
@@ -32,16 +30,10 @@ class TransportVC: UIViewController {
         view.addSubview(imageView)
         view.addSubview(inputTextField)
         view.addSubview(customButton)
-        view.addSubview(alert)
     }
 
     private func configureViews()  {
-        styleViews()
         addConstraints()
-    }
-
-    private func styleViews() {
-        alert.isHidden = true
     }
 
     private func addConstraints() {
@@ -58,11 +50,6 @@ class TransportVC: UIViewController {
             $0.trailing.equalToSuperview().offset(-30)
         }
 
-        alert.snp.makeConstraints {
-            $0.height.width.equalTo(200)
-            $0.center.equalToSuperview()
-        }
-
         customButton.snp.makeConstraints {
             $0.width.equalTo(100)
             $0.centerX.equalToSuperview()
@@ -71,15 +58,12 @@ class TransportVC: UIViewController {
     }
 
     private func presentTransportVC() {
-        guard let
-                transportName = inputTextField.text,
+        guard let transportName = inputTextField.text,
               !transportName.isEmpty,
               Transport.allCases.contains(where: { $0.description == transportName }),
               let transport = Transport.allCases.first(where: { $0.description == transportName })
         else {
-            self.tabBarController?.tabBar.isUserInteractionEnabled = false
-            inputTextField.isEnabled = false
-            alert.isHidden = false
+            navigationController?.present(CustomAlertView(alertTitle: "Empty transport name", alertMessage: "Please enter transport name 🚗🚲🚎", buttonTitle: "OK"), animated: true)
             return
         }
         let transportVC = TransportDetailsVC(transport: transport)
@@ -95,13 +79,7 @@ extension TransportVC: UITextFieldDelegate {
     }
 }
 
-extension TransportVC: CustomAlertDelegate {
-    func didTapButtonInAlert() {
-        self.tabBarController?.tabBar.isUserInteractionEnabled = true
-        inputTextField.isEnabled = true
-        alert.isHidden = true
-    }
-
+extension TransportVC: CustomButtonDelegate {
     func didTapCustomButton() {
         inputTextField.text = Transport.allCases.randomElement()?.description
     }
