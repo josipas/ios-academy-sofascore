@@ -2,9 +2,9 @@ import UIKit
 
 class TransportDetailsVC: UIViewController {
     private var collectionView: UICollectionView!
-    private var titleLabel: UILabel!
-    private var detailsButton: CustomButton!
-    private var detailsText: UITextView!
+    private var titleLabel = UILabel()
+    private var detailsButton = CustomButton(title: "More", color: .systemPink)
+    private var detailsText = UITextView()
 
     private let cellIdentifier = "cellId"
 
@@ -51,12 +51,8 @@ class TransportDetailsVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        titleLabel = UILabel()
-
-        detailsButton = CustomButton(title: "More", color: .systemPink)
         detailsButton.delegate = self
 
-        detailsText = UITextView()
         detailsText.isHidden = true
     }
 
