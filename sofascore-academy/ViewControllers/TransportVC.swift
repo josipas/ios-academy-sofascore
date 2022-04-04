@@ -63,12 +63,21 @@ class TransportVC: UIViewController {
               Transport.allCases.contains(where: { $0.description == transportName }),
               let transport = Transport.allCases.first(where: { $0.description == transportName })
         else {
-            navigationController?.present(CustomAlertView(alertTitle: "Empty transport name", alertMessage: "Please enter transport name 🚗🚲🚎", buttonTitle: "OK"), animated: true)
+            presentAlertOnMainThread(title: "Empty transport name", message: "Please enter transport name 🚗🚲🚎", buttonTitle: "OK")
             return
         }
         let transportVC = TransportDetailsVC(transport: transport)
         inputTextField.text = ""
         navigationController?.present(transportVC, animated: true)
+    }
+
+    func presentAlertOnMainThread(title: String, message: String, buttonTitle: String) {
+        DispatchQueue.main.async {
+          let alertVC = CustomAlertView(alertTitle: title, alertMessage: message, buttonTitle: buttonTitle)
+          alertVC.modalPresentationStyle = .overFullScreen
+          alertVC.modalTransitionStyle = .crossDissolve 
+          self.present(alertVC, animated: true)
+        }
     }
 }
 
