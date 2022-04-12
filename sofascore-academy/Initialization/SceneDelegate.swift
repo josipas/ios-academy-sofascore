@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         UITabBar.appearance().backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 1)
         tabBar.tabBar.tintColor = .darkGray
-        tabBar.viewControllers = [createImagesNavigationController(), createTransportNavigationController(), createTableNavigationController()]
+        tabBar.viewControllers = [createImagesNavigationController(), createTransportNavigationController(), createTableNavigationController(), createWeatherNavigationController()]
         
         return tabBar
     }
@@ -50,6 +50,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tableVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
 
         return UINavigationController(rootViewController: tableVC)
+    }
+
+    func createWeatherNavigationController() -> UINavigationController {
+        let weatherVC = WeatherVC()
+
+        weatherVC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 3)
+
+        return UINavigationController(rootViewController: weatherVC)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
