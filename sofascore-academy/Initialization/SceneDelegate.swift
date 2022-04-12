@@ -20,28 +20,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
 
-        UITabBar.appearance().backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0.4)
-        tabBar.tabBar.tintColor = .white
-        tabBar.viewControllers = [createFirstNavigationController(), createSecondNavigationController()]
+        UITabBar.appearance().backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 1)
+        tabBar.tabBar.tintColor = .darkGray
+        tabBar.viewControllers = [createImagesNavigationController(), createTransportNavigationController(), createTableNavigationController()]
         
         return tabBar
     }
     
-    func createFirstNavigationController() -> UINavigationController {
-        let firstVC = ImagesVC()
+    func createImagesNavigationController() -> UINavigationController {
+        let imagesVC = ImagesVC()
 
-        firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        firstVC.title = "Images"
+        imagesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        imagesVC.title = "Images"
 
-        return UINavigationController(rootViewController: firstVC)
+        return UINavigationController(rootViewController: imagesVC)
     }
     
-    func createSecondNavigationController() -> UINavigationController {
-        let secondVC = TransportVC()
+    func createTransportNavigationController() -> UINavigationController {
+        let transportVC = TransportVC()
 
-        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+        transportVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
         
-        return UINavigationController(rootViewController: secondVC)
+        return UINavigationController(rootViewController: transportVC)
+    }
+
+    func createTableNavigationController() -> UINavigationController {
+        let tableVC = TableViewVC()
+
+        tableVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
+
+        return UINavigationController(rootViewController: tableVC)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
