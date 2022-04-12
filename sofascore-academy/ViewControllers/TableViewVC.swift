@@ -5,11 +5,24 @@ class TableViewVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray
+
+        addSubviews()
+        styleViews()
+    }
+
+    private func addSubviews() {
         self.tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "ChecklistItem")
     }
 
-    // MARK: - Table View Data Source
+    private func styleViews()  {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        self.navigationController?.navigationBar.standardAppearance = appearance
+
+        view.backgroundColor = .white
+    }
+
     override func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
@@ -49,7 +62,6 @@ class TableViewVC: UITableViewController {
         return cell
     }
 
-    // MARK: - Table View Delegate
     override func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath

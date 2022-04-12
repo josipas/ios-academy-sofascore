@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
 
-        UITabBar.appearance().backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0.4)
-        tabBar.tabBar.tintColor = .white
+        UITabBar.appearance().backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 1)
+        tabBar.tabBar.tintColor = .darkGray
         tabBar.viewControllers = [createImagesNavigationController(), createTransportNavigationController(), createTableNavigationController()]
         
         return tabBar
