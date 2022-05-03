@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CustomButtonDelegate {
+protocol CustomButtonDelegate: AnyObject {
     func didTapCustomButton()
 }
 

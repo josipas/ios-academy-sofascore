@@ -12,8 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = GitHubVC()
-        
+        window?.rootViewController = createGitHubNavigationController()
         window?.makeKeyAndVisible()
     }
     
@@ -25,6 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBar.viewControllers = [createImagesNavigationController(), createTransportNavigationController(), createTableNavigationController(), createWeatherNavigationController()]
         
         return tabBar
+    }
+
+    func createGitHubNavigationController() -> UINavigationController {
+        return UINavigationController(rootViewController: GitHubVC())
     }
     
     func createImagesNavigationController() -> UINavigationController {

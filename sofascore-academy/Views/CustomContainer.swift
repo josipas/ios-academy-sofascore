@@ -1,11 +1,17 @@
 import UIKit
 
+protocol CustomContainerDelegate: AnyObject {
+    func didTapCustomButton()
+}
+
 class CustomContainer: UIView {
     var rightUpLabel = UILabel()
     var rightDownLabel = UILabel()
     var leftUpLabel = UILabel()
     var leftDownLabel = UILabel()
     private var button: CustomButton!
+
+    weak var delegate: CustomContainerDelegate?
 
     private var color: UIColor?
     private var title: String?
@@ -37,6 +43,7 @@ class CustomContainer: UIView {
         else { return }
 
         button = CustomButton(title: title, color: color)
+        button.delegate = self
     }
 
     private func addSubviews()  {
@@ -84,5 +91,11 @@ class CustomContainer: UIView {
             $0.leading.trailing.bottom.equalToSuperview().inset(20)
             $0.top.equalTo(rightDownLabel.snp.bottom).offset(15)
         }
+    }
+}
+
+extension CustomContainer: CustomButtonDelegate {
+    func didTapCustomButton() {
+        delegate?.didTapCustomButton()
     }
 }

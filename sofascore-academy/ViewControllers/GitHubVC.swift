@@ -1,46 +1,64 @@
 import UIKit
 
 class GitHubVC: UIViewController {
-    private var profileContainer = CustomContainer(title: "Github Profile", color: .purple, rightTitle: "Public Gists", leftTitle: "Public Repos")
-    private var followersContainer = CustomContainer(title: "Get Followers", color: .blue, rightTitle: "Following", leftTitle: "Followers")
+    private var inputTextField = CustomTextField(color: .systemGray)
+    private var customButton = CustomButton(title: "Get follower", color: .systemGray)
+
+    private var follower: Follower?
 
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        super.viewDidLoad()
+        view.backgroundColor = .lightGray
+        buildViews()
+    }
 
-        getData()
+    private func buildViews() {
+        createViews()
         addSubviews()
         addConstraints()
     }
 
+    private func createViews() {
+        customButton.delegate = self
+    }
+
     private func addSubviews() {
-        view.addSubview(profileContainer)
-        view.addSubview(followersContainer)
+        view.addSubview(inputTextField)
+        view.addSubview(customButton)
     }
 
     private func addConstraints() {
-        profileContainer.snp.makeConstraints {
-            $0.trailing.leading.top.equalToSuperview().inset(40)
+        inputTextField.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.height.equalTo(50)
+            $0.width.equalTo(200)
         }
 
-        followersContainer.snp.makeConstraints {
-            $0.trailing.leading.equalToSuperview().inset(40)
-            $0.top.equalTo(profileContainer.snp.bottom).offset(20)
+        customButton.snp.makeConstraints {
+            $0.width.equalTo(100)
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(inputTextField.snp.bottom).offset(50)
         }
     }
 
-    private func getData() {
-        NetworkManager.shared.getFollowers(for: "AntePrpic") { [weak self] result in
+    private func pushGitHubFollowersVC(follower: Follower) {
+        let followersVC = GitHubFollowersVC(followersUrl: follower.followersUrl, title: follower.login)
+        inputTextField.text = ""
+        navigationController?.pushViewController(followersVC, animated: true)
+    }
+}
+
+extension GitHubVC: CustomButtonDelegate {
+    func didTapCustomButton() {
+        let input = inputTextField.text ?? ""
+        NetworkManager.shared.getFollowerDetails(for: input) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case .success(let follower):
                 print(follower)
-
                 DispatchQueue.main.async {
-                    self.profileContainer.rightDownLabel.text = String(follower.public_repos)
-                    self.profileContainer.leftDownLabel.text = String(follower.public_gists)
-                    self.followersContainer.rightDownLabel.text = String(follower.following)
-                    self.followersContainer.leftDownLabel.text = String(follower.followers)
+                    self.pushGitHubFollowersVC(follower: follower)
                 }
             case .failure(let error):
                 print(error)
