@@ -6,46 +6,39 @@ public class NetworkManager {
 
     private init () {} // create only one instance!
 
-    func getWoeid(for city: String, completed: @escaping (Result<[City], CustomError>) -> Void) {
-        var endpoint = URLComponents()
+    func getFollowers(for username: String, completed: @escaping (Result<Follower, CustomError>) -> Void ) {
 
-        endpoint.scheme = "https"
-        endpoint.host = "www.metaweather.com"
-        endpoint.path = "/api/location/search/"
+            let endpoint = "https://api.github.com" + "/users/" + "\(username)"
 
-        endpoint.queryItems = [URLQueryItem(name: "query", value: city.lowercased())]
-
-        guard let url = URL(string: endpoint.string!) else {
-            completed(.failure(.invalidUrl))
-            return
-        }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let _ = error {
+            guard let url = URL(string: endpoint) else {
                 completed(.failure(.error))
                 return
             }
 
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(.failure(.invalidResponse))
-                return
-            }
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let _ = error {
+                    completed(.failure(.unableToComplete))
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    completed(.failure(.invalidResponse))
+                    return
+                }
+                guard let data = data else {
+                    completed(.failure(.unableToComplete))
+                    return
+                }
 
-            guard let data = data else {
-                completed(.failure(.invalidData))
-                return
+                do {
+                    let decoder = JSONDecoder()
+                    let follower = try decoder.decode(Follower.self, from: data)
+                    completed(.success(follower))
+                } catch {
+                    completed(.failure(.invalidData))
+                }
             }
-
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let city = try decoder.decode([City].self, from: data)
-                completed(.success(city))
-            } catch {
-                completed(.failure(.decodeError))
-            }
+            task.resume()
         }
-        task.resume()
-    }
 
 }
 

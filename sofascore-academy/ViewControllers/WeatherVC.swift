@@ -51,7 +51,7 @@ class WeatherVC: UIViewController {
 
 extension WeatherVC: CustomButtonDelegate {
     func didTapCustomButton() {
-        let input = inputTextField.text ?? ""
+        /*let input = inputTextField.text ?? ""
         NetworkManager.shared.getWoeid(for: input) { [weak self] result in
             switch result {
             case .success(let city):
@@ -65,6 +65,6 @@ extension WeatherVC: CustomButtonDelegate {
             return
         }
 
-        self.presentWeatherDeatilsVC(city: city.title, woeid: city.woeid)
+        self.presentWeatherDeatilsVC(city: city.title, woeid: city.woeid)*/
     }
 }
