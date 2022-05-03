@@ -21,6 +21,5 @@ class CustomTextField: UITextField {
         layer.cornerRadius = 20
         clipsToBounds = true
         textAlignment = .center
-        placeholder = "Search transport..."
     }
 }
