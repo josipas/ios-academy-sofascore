@@ -1,11 +1,8 @@
 import UIKit
-import Foundation
 
 class WeatherVC: UIViewController {
     private var inputTextField = CustomTextField(color: .systemGray)
     private var customButton = CustomButton(title: "Get city", color: .systemGray)
-
-    private var city: City?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,20 +48,17 @@ class WeatherVC: UIViewController {
 
 extension WeatherVC: CustomButtonDelegate {
     func didTapCustomButton() {
-        /*let input = inputTextField.text ?? ""
+        let input = inputTextField.text ?? ""
         NetworkManager.shared.getWoeid(for: input) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let city):
-                self?.city = city[0]
+                DispatchQueue.main.async {
+                    self.presentWeatherDeatilsVC(city: city[0].title, woeid: city[0].woeid)
+                }
             case .failure(let error):
                 print(error)
             }
         }
-
-        guard let city = self.city else {
-            return
-        }
-
-        self.presentWeatherDeatilsVC(city: city.title, woeid: city.woeid)*/
     }
 }

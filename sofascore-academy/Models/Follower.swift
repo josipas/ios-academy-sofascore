@@ -1,13 +1,13 @@
 import Foundation
 
-struct Follower: Decodable {
+struct Follower: Codable {
     var profileUrl: String
     var followersUrl: String
     var followers: Int
     var following: Int
     var publicRepos: Int
     var publicGists: Int
-    var bio: String
+    var bio: String?
     var company: String?
     var name: String?
     var location: String?

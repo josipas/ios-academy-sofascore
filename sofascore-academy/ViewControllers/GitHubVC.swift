@@ -1,24 +1,24 @@
 import UIKit
 
 class GitHubVC: UIViewController {
-    private var inputTextField = CustomTextField(color: .systemGray)
-    private var customButton = CustomButton(title: "Get follower", color: .systemGray)
+    private let inputTextField = CustomTextField(color: .systemGray)
+    private let customButton = CustomButton(title: "Get follower", color: .systemGray)
 
     private var follower: Follower?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
         buildViews()
     }
 
     private func buildViews() {
-        createViews()
+        styleViews()
         addSubviews()
         addConstraints()
     }
 
-    private func createViews() {
+    private func styleViews() {
+        view.backgroundColor = .lightGray
         customButton.delegate = self
     }
 
@@ -50,7 +50,7 @@ class GitHubVC: UIViewController {
 
 extension GitHubVC: CustomButtonDelegate {
     func didTapCustomButton() {
-        let input = inputTextField.text ?? ""
+        guard let input = inputTextField.text else { return }
         NetworkManager.shared.getFollowerDetails(for: input) { [weak self] result in
             guard let self = self else { return }
 

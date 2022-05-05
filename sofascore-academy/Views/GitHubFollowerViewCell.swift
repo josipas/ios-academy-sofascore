@@ -4,8 +4,8 @@ import SnapKit
 class GitHubFollowerViewCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: GitHubFollowerViewCell.self)
 
-    private var label = UILabel()
-    private var imageView = UIImageView()
+    private let label = UILabel()
+    private let imageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,6 +28,7 @@ class GitHubFollowerViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
+        label.textAlignment = .center
     }
 
     private func addSubviews() {
@@ -37,8 +38,7 @@ class GitHubFollowerViewCell: UICollectionViewCell {
 
     private func addConstraints() {
         label.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.trailing.leading.bottom.equalToSuperview()
             $0.height.equalTo(20)
         }
 
@@ -46,6 +46,5 @@ class GitHubFollowerViewCell: UICollectionViewCell {
             $0.leading.trailing.top.equalToSuperview()
             $0.bottom.equalTo(label.snp.top)
         }
-
     }
 }

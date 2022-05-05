@@ -1,15 +1,27 @@
 import UIKit
 
 class GitHubFollowerDetailsVC: UIViewController {
-    private var profileContainer = CustomContainer(title: "Github Profile", color: .purple, rightTitle: "Public Gists", leftTitle: "Public Repos")
-    private var followersContainer = CustomContainer(title: "Get Followers", color: .blue, rightTitle: "Following", leftTitle: "Followers")
-    private var profileImage = UIImageView()
-    private var loginLabel = UILabel()
-    private var nameLabel = UILabel()
-    private var locationLabel = UILabel()
-    private var jobDescription = UILabel()
+    private let profileContainer = CustomContainer(title: "Github Profile", color: .purple, rightTitle: "Public Gists", leftTitle: "Public Repos")
+    private let followersContainer = CustomContainer(title: "Get Followers", color: .blue, rightTitle: "Following", leftTitle: "Followers")
+    private let profileImage = UIImageView()
+    private let loginLabel = UILabel()
+    private let nameLabel = UILabel()
+    private let locationLabel = UILabel()
+    private let jobDescription = UILabel()
+    private let activityIndicatorView = UIActivityIndicatorView(style: .large)
 
+    private var follower: BasicFollower?
     private var profileUrl: String?
+
+    init(follower: BasicFollower) {
+        super.init(nibName: nil, bundle: nil)
+
+        self.follower = follower
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         view.backgroundColor = .white
@@ -28,10 +40,12 @@ class GitHubFollowerDetailsVC: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(locationLabel)
         view.addSubview(jobDescription)
+        view.addSubview(activityIndicatorView)
     }
 
     private func styleViews() {
         profileContainer.delegate = self
+        followersContainer.delegate = self
 
         profileImage.layer.cornerRadius = 10
         profileImage.clipsToBounds = true
@@ -88,11 +102,28 @@ class GitHubFollowerDetailsVC: UIViewController {
             $0.trailing.leading.equalToSuperview().inset(20)
             $0.top.equalTo(profileContainer.snp.bottom).offset(20)
         }
+
+        activityIndicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+    }
+
+    private func pushGitHubFollowersVC(follower: BasicFollower) {
+        let followersVC = GitHubFollowersVC(followersUrl: follower.followersUrl, title: follower.login)
+        navigationController?.pushViewController(followersVC, animated: true)
     }
 
     private func getData() {
-        NetworkManager.shared.getFollowerDetails(for: "mozilla") { [weak self] result in
+        activityIndicatorView.startAnimating()
+
+        guard let login = follower?.login else { return }
+
+        NetworkManager.shared.getFollowerDetails(for: login) { [weak self] result in
             guard let self = self else { return }
+
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+            }
 
             switch result {
             case .success(let follower):
@@ -110,7 +141,8 @@ class GitHubFollowerDetailsVC: UIViewController {
                     self.nameLabel.text = follower.name
                     self.locationLabel.text = follower.location ?? "Unknown location"
                     let company = follower.company ?? "Unknown company"
-                    self.jobDescription.text = follower.bio + " @ " + company
+                    let bio = follower.bio ?? "Employee"
+                    self.jobDescription.text = bio + " @ " + company
                 }
             case .failure(let error):
                 print(error)
@@ -120,10 +152,15 @@ class GitHubFollowerDetailsVC: UIViewController {
 }
 
 extension GitHubFollowerDetailsVC: CustomContainerDelegate {
-    func didTapCustomButton() {
-        guard let profileUrl = profileUrl else { return }
-        if let url = URL(string: profileUrl) {
-            UIApplication.shared.open(url)
+    func didTapCustomButton(container: CustomContainer) {
+        if container == profileContainer {
+            guard let profileUrl = profileUrl else { return }
+            if let url = URL(string: profileUrl) {
+                UIApplication.shared.open(url)
+            }
+        } else {
+            guard let follower = follower else { return }
+            self.pushGitHubFollowersVC(follower: follower)
         }
     }
 }

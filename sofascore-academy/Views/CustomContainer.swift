@@ -1,14 +1,14 @@
 import UIKit
 
 protocol CustomContainerDelegate: AnyObject {
-    func didTapCustomButton()
+    func didTapCustomButton(container: CustomContainer)
 }
 
 class CustomContainer: UIView {
-    var rightUpLabel = UILabel()
-    var rightDownLabel = UILabel()
-    var leftUpLabel = UILabel()
-    var leftDownLabel = UILabel()
+    let rightUpLabel = UILabel()
+    let rightDownLabel = UILabel()
+    let leftUpLabel = UILabel()
+    let leftDownLabel = UILabel()
     private var button: CustomButton!
 
     weak var delegate: CustomContainerDelegate?
@@ -96,6 +96,6 @@ class CustomContainer: UIView {
 
 extension CustomContainer: CustomButtonDelegate {
     func didTapCustomButton() {
-        delegate?.didTapCustomButton()
+        delegate?.didTapCustomButton(container: self)
     }
 }
