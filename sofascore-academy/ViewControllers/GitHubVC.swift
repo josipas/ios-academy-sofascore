@@ -1,22 +1,24 @@
 import UIKit
 
-class WeatherVC: UIViewController {
-    private var inputTextField = CustomTextField(color: .systemGray)
-    private var customButton = CustomButton(title: "Get city", color: .systemGray)
+class GitHubVC: UIViewController {
+    private let inputTextField = CustomTextField(color: .systemGray)
+    private let customButton = CustomButton(title: "Get follower", color: .systemGray)
+
+    private var follower: Follower?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
         buildViews()
     }
 
     private func buildViews() {
-        createViews()
+        styleViews()
         addSubviews()
         addConstraints()
     }
 
-    private func createViews() {
+    private func styleViews() {
+        view.backgroundColor = .lightGray
         customButton.delegate = self
     }
 
@@ -39,22 +41,24 @@ class WeatherVC: UIViewController {
         }
     }
 
-    private func presentWeatherDeatilsVC(city: String, woeid: Int) {
-        let weatherVC = WeatherDetailsVC(city: city, woeid: woeid)
+    private func pushGitHubFollowersVC(follower: Follower) {
+        let followersVC = GitHubFollowersVC(followersUrl: follower.followersUrl, title: follower.login)
         inputTextField.text = ""
-        navigationController?.present(weatherVC, animated: true)
+        navigationController?.pushViewController(followersVC, animated: true)
     }
 }
 
-extension WeatherVC: CustomButtonDelegate {
+extension GitHubVC: CustomButtonDelegate {
     func didTapCustomButton() {
-        let input = inputTextField.text ?? ""
-        NetworkManager.shared.getWoeid(for: input) { [weak self] result in
+        guard let input = inputTextField.text else { return }
+        NetworkManager.shared.getFollowerDetails(for: input) { [weak self] result in
             guard let self = self else { return }
+
             switch result {
-            case .success(let city):
+            case .success(let follower):
+                print(follower)
                 DispatchQueue.main.async {
-                    self.presentWeatherDeatilsVC(city: city[0].title, woeid: city[0].woeid)
+                    self.pushGitHubFollowersVC(follower: follower)
                 }
             case .failure(let error):
                 print(error)

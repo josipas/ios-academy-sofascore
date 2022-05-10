@@ -12,7 +12,17 @@
 		5239712B27DF974C00B2F29D /* TransportDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239712A27DF974C00B2F29D /* TransportDetailsVC.swift */; };
 		5239713027DF974D00B2F29D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5239712F27DF974D00B2F29D /* Assets.xcassets */; };
 		5239713327DF974D00B2F29D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5239713127DF974D00B2F29D /* LaunchScreen.storyboard */; };
+		523D84822821198D00BE227E /* GitHubFollowerDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523D84812821198D00BE227E /* GitHubFollowerDetailsVC.swift */; };
+		523D848428211BA100BE227E /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523D848328211BA100BE227E /* Follower.swift */; };
+		523D84862821213200BE227E /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523D84852821213200BE227E /* CustomContainer.swift */; };
+		523D848828212D7E00BE227E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523D848728212D7E00BE227E /* UIColor+Extensions.swift */; };
+		523D848A28213B8400BE227E /* GitHubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523D848928213B8300BE227E /* GitHubVC.swift */; };
+		523D848C28213CC100BE227E /* GitHubFollowersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523D848B28213CC100BE227E /* GitHubFollowersVC.swift */; };
+		523D848E2821426700BE227E /* BasicFollower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523D848D2821426700BE227E /* BasicFollower.swift */; };
+		523D8490282144BC00BE227E /* GitHubFollowerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523D848F282144BC00BE227E /* GitHubFollowerViewCell.swift */; };
 		5244DFF627F3823B00D32C6B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244DFF527F3823B00D32C6B /* CustomCell.swift */; };
+		524D493D282ACAE600582BCE /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D493C282ACAE600582BCE /* FavoritesVC.swift */; };
+		524D493F282ACFAE00582BCE /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D493E282ACFAE00582BCE /* PersistanceManager.swift */; };
 		52A24CC227FAFD9A00C1D1F5 /* TableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A24CC127FAFD9A00C1D1F5 /* TableViewVC.swift */; };
 		52A24CC427FAFEDB00C1D1F5 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A24CC327FAFEDB00C1D1F5 /* CustomTableViewCell.swift */; };
 		52A79C5927F1E94000C15103 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 52A79C5827F1E94000C15103 /* SnapKit */; };
@@ -38,7 +48,17 @@
 		5239712F27DF974D00B2F29D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5239713227DF974D00B2F29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5239713427DF974D00B2F29D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		523D84812821198D00BE227E /* GitHubFollowerDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubFollowerDetailsVC.swift; sourceTree = "<group>"; };
+		523D848328211BA100BE227E /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		523D84852821213200BE227E /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
+		523D848728212D7E00BE227E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		523D848928213B8300BE227E /* GitHubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubVC.swift; sourceTree = "<group>"; };
+		523D848B28213CC100BE227E /* GitHubFollowersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubFollowersVC.swift; sourceTree = "<group>"; };
+		523D848D2821426700BE227E /* BasicFollower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFollower.swift; sourceTree = "<group>"; };
+		523D848F282144BC00BE227E /* GitHubFollowerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubFollowerViewCell.swift; sourceTree = "<group>"; };
 		5244DFF527F3823B00D32C6B /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		524D493C282ACAE600582BCE /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		524D493E282ACFAE00582BCE /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		52A24CC127FAFD9A00C1D1F5 /* TableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewVC.swift; sourceTree = "<group>"; };
 		52A24CC327FAFEDB00C1D1F5 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		52A79C5C27F236A400C15103 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
@@ -100,12 +120,17 @@
 		52A79C5A27F2367000C15103 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				52A79C6027F24B6200C15103 /* CustomAlertView.swift */,
 				5239712A27DF974C00B2F29D /* TransportDetailsVC.swift */,
 				52C73C3C27DFA5E00085CC8C /* TransportVC.swift */,
 				52C73C4027DFA6610085CC8C /* ImagesVC.swift */,
 				52A24CC127FAFD9A00C1D1F5 /* TableViewVC.swift */,
 				52EA1B2F2805DCC800D2F42F /* WeatherVC.swift */,
 				52EA1B3E2805FBB800D2F42F /* WeatherDetailsVC.swift */,
+				523D84812821198D00BE227E /* GitHubFollowerDetailsVC.swift */,
+				523D848928213B8300BE227E /* GitHubVC.swift */,
+				523D848B28213CC100BE227E /* GitHubFollowersVC.swift */,
+				524D493C282ACAE600582BCE /* FavoritesVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -115,10 +140,11 @@
 			children = (
 				52A79C5C27F236A400C15103 /* CustomImageView.swift */,
 				52A79C5E27F23F4400C15103 /* CustomTextField.swift */,
-				52A79C6027F24B6200C15103 /* CustomAlertView.swift */,
 				52B7F8B127F35A71008CBACF /* CustomButton.swift */,
 				5244DFF527F3823B00D32C6B /* CustomCell.swift */,
 				52A24CC327FAFEDB00C1D1F5 /* CustomTableViewCell.swift */,
+				523D84852821213200BE227E /* CustomContainer.swift */,
+				523D848F282144BC00BE227E /* GitHubFollowerViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,6 +165,7 @@
 			children = (
 				52EA1B322805DF3C00D2F42F /* NetworkManager.swift */,
 				52EA1B372805E78C00D2F42F /* CustomError.swift */,
+				524D493E282ACFAE00582BCE /* PersistanceManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -147,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				52EA1B352805E22500D2F42F /* UIImageView+Extensions.swift */,
+				523D848728212D7E00BE227E /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -155,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				52EA1B3A2805E80400D2F42F /* City.swift */,
+				523D848328211BA100BE227E /* Follower.swift */,
+				523D848D2821426700BE227E /* BasicFollower.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,19 +270,29 @@
 				52A79C5F27F23F4400C15103 /* CustomTextField.swift in Sources */,
 				52EA1B302805DCC800D2F42F /* WeatherVC.swift in Sources */,
 				5239712B27DF974C00B2F29D /* TransportDetailsVC.swift in Sources */,
+				524D493D282ACAE600582BCE /* FavoritesVC.swift in Sources */,
 				5244DFF627F3823B00D32C6B /* CustomCell.swift in Sources */,
 				52B7F8B227F35A71008CBACF /* CustomButton.swift in Sources */,
 				52A79C5D27F236A400C15103 /* CustomImageView.swift in Sources */,
 				5239712727DF974C00B2F29D /* AppDelegate.swift in Sources */,
 				52EA1B3B2805E80400D2F42F /* City.swift in Sources */,
+				523D848E2821426700BE227E /* BasicFollower.swift in Sources */,
 				52A24CC427FAFEDB00C1D1F5 /* CustomTableViewCell.swift in Sources */,
+				523D848428211BA100BE227E /* Follower.swift in Sources */,
 				52EA1B3F2805FBB800D2F42F /* WeatherDetailsVC.swift in Sources */,
+				523D848C28213CC100BE227E /* GitHubFollowersVC.swift in Sources */,
+				523D84822821198D00BE227E /* GitHubFollowerDetailsVC.swift in Sources */,
 				52C73C3D27DFA5E00085CC8C /* TransportVC.swift in Sources */,
 				52A24CC227FAFD9A00C1D1F5 /* TableViewVC.swift in Sources */,
+				523D848A28213B8400BE227E /* GitHubVC.swift in Sources */,
+				523D8490282144BC00BE227E /* GitHubFollowerViewCell.swift in Sources */,
 				52EA1B332805DF3C00D2F42F /* NetworkManager.swift in Sources */,
 				52C73C4127DFA6610085CC8C /* ImagesVC.swift in Sources */,
 				5239712927DF974C00B2F29D /* SceneDelegate.swift in Sources */,
+				523D848828212D7E00BE227E /* UIColor+Extensions.swift in Sources */,
+				523D84862821213200BE227E /* CustomContainer.swift in Sources */,
 				52A79C6127F24B6200C15103 /* CustomAlertView.swift in Sources */,
+				524D493F282ACFAE00582BCE /* PersistanceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

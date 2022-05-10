@@ -7,4 +7,5 @@ enum CustomError: String, Error {
     case invalidUrl = "URL couldn't be created"
     case decodeError = "Decode went wrong"
     case error = "Error"
+    case unableToAddToFavorites = "Unable to add to favorites in User Defaults"
 }

@@ -2,7 +2,8 @@ import UIKit
 import Foundation
 
 class WeatherDetailsVC: UIViewController {
-    private var cityLabel = UILabel()
+    private let cityLabel = UILabel()
+    private let woeidLabel = UILabel()
 
     private var city: String?
     private var woeid: Int?
@@ -28,15 +29,25 @@ class WeatherDetailsVC: UIViewController {
 
     private func addViews() {
         view.addSubview(cityLabel)
+        view.addSubview(woeidLabel)
     }
 
     private func styleViews() {
         cityLabel.text = city
+        woeidLabel.textAlignment = .center
+
+        guard let woeid = woeid else { return }
+        woeidLabel.text = String(woeid)
     }
 
     private func addConstraints() {
         cityLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
+        }
+
+        woeidLabel.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(cityLabel.snp.bottom).offset(10)
         }
     }
 }
