@@ -11,7 +11,7 @@ public class NetworkManager {
         let endpoint = "https://api.github.com" + "/users/" + "\(username)"
 
         guard let url = URL(string: endpoint) else {
-            completed(.failure(.error))
+            completed(.failure(.invalidUrl))
             return
         }
 

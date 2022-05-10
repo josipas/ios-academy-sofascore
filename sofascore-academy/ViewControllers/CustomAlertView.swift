@@ -31,7 +31,7 @@ class CustomAlertView: UIViewController {
     private func createViews() {
         guard let buttonTitle = buttonTitle else { return }
 
-        button = CustomButton(title: buttonTitle, color: .purple)
+        button = CustomButton(title: buttonTitle, color: .systemBlue)
     }
 
     private func addSubviews() {

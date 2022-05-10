@@ -3,7 +3,7 @@ import UIKit
 class GitHubFollowersVC: UIViewController {
     private enum Section { case main }
     private var followersUrl: String?
-    private var profileTitle: String?
+    private var login: String?
     private var followers: [BasicFollower]?
     private var dataSource: UICollectionViewDiffableDataSource<Section, BasicFollower>!
 
@@ -15,7 +15,7 @@ class GitHubFollowersVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
 
         self.followersUrl = followersUrl
-        self.profileTitle = title
+        self.login = title
     }
 
     required init?(coder: NSCoder) {
@@ -43,15 +43,14 @@ class GitHubFollowersVC: UIViewController {
         NetworkManager.shared.getFollowers(for: followersUrl) { [weak self] result in
             guard let self = self else { return }
 
-            DispatchQueue.main.async {
-                self.activityIndicatorView.stopAnimating()
-            }
-
             switch result {
             case .success(let followers):
                 print(followers)
                 self.followers = followers
                 self.updateData(followers)
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
+                }
             case .failure(let error):
                 print(error)
             }
@@ -64,9 +63,39 @@ class GitHubFollowersVC: UIViewController {
         appearance.backgroundColor = .white
         self.navigationController?.navigationBar.standardAppearance = appearance
 
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: (#selector(addButtonTapped)))
 
-        label.text = profileTitle
+        label.text = login
+    }
+
+    @objc func addButtonTapped() {
+        guard let login = login else { return }
+
+        NetworkManager.shared.getFollowerDetails(for: login) { [weak self] result in
+            switch result {
+            case .success(let follower):
+                PersistenceManager.updateWith(favorite: follower, actionType: .add) { [weak self] error in
+                    guard let self = self else { return }
+                    guard error != nil else {
+                        self.presentAlertOnMainThread(title: "Success", message: "User added to favorites", buttonTitle: "OK")
+                        return
+                    }
+                    self.presentAlertOnMainThread(title: "Error", message: "Something went wrong", buttonTitle: "OK")
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    private func presentAlertOnMainThread(title: String, message: String, buttonTitle: String) {
+        DispatchQueue.main.async {
+          let alertVC = CustomAlertView(alertTitle: title, alertMessage: message, buttonTitle: buttonTitle)
+          alertVC.modalPresentationStyle = .overFullScreen
+          alertVC.modalTransitionStyle = .crossDissolve
+          self.present(alertVC, animated: true)
+        }
     }
 
     private func addSubviews() {
@@ -107,8 +136,6 @@ class GitHubFollowersVC: UIViewController {
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, BasicFollower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GitHubFollowerViewCell.reuseIdentifier, for: indexPath) as! GitHubFollowerViewCell
-
-            //ppopraviti guard let nešto!!!
 
             cell.set(login: self.followers?[indexPath.row].login ?? "", url: self.followers?[indexPath.row].avatarUrl ?? "")
 

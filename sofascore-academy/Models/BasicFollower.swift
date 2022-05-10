@@ -1,6 +1,6 @@
 import Foundation
 
-struct BasicFollower: Decodable, Hashable {
+struct BasicFollower: Codable, Hashable {
     var login: String
     var avatarUrl: String
     var url: String

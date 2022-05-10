@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = createGitHubNavigationController()
+        window?.rootViewController = createTabBar()
         window?.makeKeyAndVisible()
     }
     
@@ -21,13 +21,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         UITabBar.appearance().backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 1)
         tabBar.tabBar.tintColor = .darkGray
-        tabBar.viewControllers = [createImagesNavigationController(), createTransportNavigationController(), createTableNavigationController(), createWeatherNavigationController()]
+        tabBar.viewControllers = [createGitHubNavigationController(), createFavoritesNavigationController()]
         
         return tabBar
     }
 
     func createGitHubNavigationController() -> UINavigationController {
-        return UINavigationController(rootViewController: GitHubVC())
+        let gitHubVC = GitHubVC()
+
+        gitHubVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+
+        return UINavigationController(rootViewController: gitHubVC)
+    }
+
+    func createFavoritesNavigationController() -> UINavigationController {
+        let favoritesVC = FavoritesVC()
+
+        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+
+        return UINavigationController(rootViewController: favoritesVC)
     }
     
     func createImagesNavigationController() -> UINavigationController {
